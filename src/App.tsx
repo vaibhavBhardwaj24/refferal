@@ -12,10 +12,11 @@ function App() {
   const [programs, setPrograms] = useState<Course[]>();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL;
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/course");
+        const response = await axios.get(`${URL}/course`);
 
         setPrograms(response.data);
         setLoading(false);

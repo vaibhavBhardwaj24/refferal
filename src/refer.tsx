@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -16,14 +16,16 @@ const Refer = () => {
   const [referralLoad, setReferralLoad] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL;
   useEffect(() => {
     const user = Cookies.get("token");
     if (!user) {
       navigate("/register");
     }
+
     const fetchPrograms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/course");
+        const response = await axios.get(`${URL}/course`);
 
         setPrograms(response.data);
         setLoading(false);

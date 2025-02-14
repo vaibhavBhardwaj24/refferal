@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
@@ -12,11 +12,12 @@ const Register = () => {
   useEffect(() => {
     console.log(referralId);
   }, []);
+  const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL;
   const submit = async () => {
     if (email == "" || name == "") {
       return;
     }
-    const reg = await axios.post("http://localhost:5000/register", {
+    const reg = await axios.post(`${URL}/register`, {
       name: name,
       email: email,
       referralId: Number(referralId),
