@@ -45,7 +45,7 @@ const Refer = () => {
     const id = JSON.parse(user!);
     console.log(id);
 
-    const data = await axios.post("http://localhost:5000/referral", {
+    const data = await axios.post(`${URL}/referral`, {
       programId: Number(selectedProgram),
       userId: id.id,
       refEmail: email,
