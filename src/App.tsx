@@ -29,13 +29,14 @@ function App() {
     fetchPrograms();
   }, []);
 
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center min-h-[200px]">
-  //       <div className="text-blue-600">Loading programs...</div>
-  //     </div>
-  //   );
-  // }
+  const scroll = (event: { preventDefault: () => void }, id: string) => {
+    event.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+      window.history.pushState(null, "", `#${id}`); // Update URL without reloading
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -45,7 +46,7 @@ function App() {
           <p className="text-[#1A73E8]">Contact Expert</p>
         </div>
         <div className="flex justify-around items-center p-3">
-          <img src="../src/assets/logo.svg" alt="" />
+          <img src="/logo.svg" alt="" />
           <div className="flex gap-5 items-center">
             <p>Refer & Earn</p>
             <p>Resources</p>
@@ -62,10 +63,38 @@ function App() {
         </div>
         <div className="flex justify-center">
           <div className="bg-[#1A73E826] flex rounded-full gap-8 p-5 text-xl">
-            <p className="hover:text-blue-800 cursor-pointer">Refer</p>
-            <p>Benefits</p>
-            <p>FAQs</p>
-            <p>Support</p>
+            <p
+              className="hover:text-blue-800 cursor-pointer"
+              onClick={(e) => {
+                scroll(e, "refer");
+              }}
+            >
+              Refer
+            </p>
+            <p
+              className="hover:text-blue-800 cursor-pointer"
+              onClick={(e) => {
+                scroll(e, "benefits");
+              }}
+            >
+              Benefits
+            </p>
+            <p
+              className="hover:text-blue-800 cursor-pointer"
+              onClick={(e) => {
+                scroll(e, "FAQs");
+              }}
+            >
+              FAQs
+            </p>
+            <p
+              className="hover:text-blue-800 cursor-pointer"
+              onClick={(e) => {
+                scroll(e, "support");
+              }}
+            >
+              Support
+            </p>
           </div>
         </div>
         <div className="flex  justify-center pt-5">
@@ -78,19 +107,19 @@ function App() {
               </p>
             </div>
             <img
-              src="../src/assets/main.png"
+              src="/main.png"
               alt=""
               className="w-1/2 hidden md:block translate-y-10"
             />
           </div>
         </div>
       </section>
-      <section className="flex justify-center my-9 hfi w-full">
+      <section className="flex justify-center my-9 hfi w-full" id="refer">
         <div className="flex  flex-col text-3xl p-2 font-semibold bg-[#1a73e815] w-full items-center h-1/2">
           <p className="flex gap-1">
             How do I <p className="text-blue-800">Refer?</p>
           </p>
-          <img src="../src/assets/image.png" alt="" className="w-1/2" />
+          <img src="/image.png" alt="" className="w-1/2" />
           <button
             className="bg-blue-600 p-2 rounded-md text-xl font-medium text-white"
             onClick={() => {
@@ -101,7 +130,7 @@ function App() {
           </button>
         </div>
       </section>
-      <section className="">
+      <section className="" id="benefits">
         <div className="items-center gap-10 m-12 flex-col flex">
           <p className="flex gap-1 text-3xl font-semibold">
             What are The <p className="text-blue-800">Referral Benefits?</p>
@@ -155,7 +184,7 @@ function App() {
           </button>
         </div>
       </section>
-      <section>
+      <section id="FAQs">
         <div className="w-full gap-10 my-10 flex flex-col items-center">
           <p className="flex gap-1 text-3xl font-semibold">
             Frequently Asked <p className="text-blue-800">Questions</p>
@@ -174,14 +203,10 @@ function App() {
           </p>
         </div>
       </section>
-      <section>
+      <section id="support">
         <div className="bg-[#282828] pb-40 pt-8 px-60 gap-4 flex flex-col text-white ">
           <div className="w-full flex">
-            <img
-              src="../src/assets/accredainnew.svg"
-              alt=""
-              className="h-1/2 "
-            />
+            <img src="/accredainnew.svg" alt="" className="h-1/2 " />
           </div>
           <hr />
           <p className="text-xl">Contact Us</p>
