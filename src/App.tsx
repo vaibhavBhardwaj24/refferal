@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import ""
 interface Course {
   id: number;
   name: string;
@@ -44,12 +45,17 @@ function App() {
           <p className="text-[#1A73E8]">Contact Expert</p>
         </div>
         <div className="flex justify-around items-center p-3">
-          <img src="src\assets\logo.svg" alt="" />
+          <img src="../src/assets/logo.svg" alt="" />
           <div className="flex gap-5 items-center">
             <p>Refer & Earn</p>
             <p>Resources</p>
             <p>About Us</p>
-            <button className="bg-[#1A73E8] p-2 rounded-md text-white">
+            <button
+              className="bg-[#1A73E8] p-2 rounded-md text-white"
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
               Register
             </button>
           </div>
@@ -72,7 +78,7 @@ function App() {
               </p>
             </div>
             <img
-              src="src\assets\main.png"
+              src="../src/assets/main.png"
               alt=""
               className="w-1/2 hidden md:block translate-y-10"
             />
@@ -84,7 +90,7 @@ function App() {
           <p className="flex gap-1">
             How do I <p className="text-blue-800">Refer?</p>
           </p>
-          <img src="src\assets\image.png" alt="" className="w-1/2" />
+          <img src="../src/assets/image.png" alt="" className="w-1/2" />
           <button
             className="bg-blue-600 p-2 rounded-md text-xl font-medium text-white"
             onClick={() => {
@@ -171,7 +177,11 @@ function App() {
       <section>
         <div className="bg-[#282828] pb-40 pt-8 px-60 gap-4 flex flex-col text-white ">
           <div className="w-full flex">
-            <img src="src\assets\accredainnew.svg" alt="" className="h-1/2 " />
+            <img
+              src="../src/assets/accredainnew.svg"
+              alt=""
+              className="h-1/2 "
+            />
           </div>
           <hr />
           <p className="text-xl">Contact Us</p>
